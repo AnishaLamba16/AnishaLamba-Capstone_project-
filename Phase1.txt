@@ -1,0 +1,73 @@
+Phase-1: Problem Understanding & Industry Analysis
+
+Project Title: 
+Expense On a Page: An expense approval & insight system.
+Industry: Finance / Corporate Expense Management.
+Target User: Employees, Managers, and Finance Teams.
+
+Problem Statement:
+Employees across the company usually submit expense reports for travel, meals, and miscellaneous costs, but the process is inconsistent and lacks transparency between the business and employee. They usually face these following problems: 
+•	Expense approvals often get delayed due to manual follow-ups.
+•	Employees cannot easily track the status of their claims.
+•	Finance teams lack category-level insights to manage budgets effectively.
+To solve this, the company wants a Salesforce app to:
+•	Capture and approve expenses efficiently.
+•	Automate threshold-based approvals.
+•	Provide visibility into spend patterns by category and user.
+
+Requirement Gathering:
+•	Questioning the requirements and issues faced by the Employees, Managers, and Finance Teams.
+•	Identifying the Custom objects and fields to add and the relationship between them.
+•	Defining the threshold for all of the automation and approval processes.
+•	The reports to be built according to the necessity of the Team.
+•	The integration of the outside data by CSV import.
+
+Stakeholder Analysis:
+Employee: Will submit the expense and receipts, will be needing a mobile access.
+Managers: Will review and approve all of the expenses.
+Finance Teams: Oversee compliance, audit trails, and category insights; maintain approval thresholds.
+Developers: who will build all the automation, Apex Triggers, LWC Components.
+
+Business Process Mapping  
+1.	The employee will submit the expenses and receipts.
+2.	Validation thresholds and duplicate rule will ensure that the data is of high quality.
+3.	The record will then follow the automation process of the status of the record is Draft.
+4.	The approval process will follow based on the threshold of the record.
+5.	The report and dashboard will provide monthly insights on the finances.
+
+Industry Specific Used-Case: 
+1.	Expense Management
+•	Employees create Expense records with associated Expense Lines.
+•	Validation ensures the data submitted is of high quality.
+•	Duplicate rule prevents duplicate receipt IDs.
+2.	Approvals
+•	If Expense total is above a defined threshold, apply a Flow-based approval.
+•	Automatically create a Task (“Submit Receipts”) when Expense status = Draft.
+3.	Security & Access
+•	Permission set for “Expense Approver.”
+•	Role hierarchy to ensures managers can see team expenses.
+•	Users can only access their own expenses.
+4.	Automation & Development
+•	Apex trigger to roll up Expense Line totals to parent Expense.
+•	Unit test coverage for trigger logic.
+•	LWC chart to display monthly spend by Category.
+5.	Data
+•	Import CSV of historical expenses.
+•	Maintain integrity with duplicate rules on receipt IDs.
+6.	Analytics & Reporting
+•	Monthly spend reports by Category and by User.
+•	Dashboard showing team-wide expense insights.
+
+AppExchange Exploration
+Potential AppExchange add-ons:
+o	Receipt OCR apps for auto-extracting data.
+o	Dashboards & Reporting accelerators.
+
+
+
+
+
+
+
+
+
