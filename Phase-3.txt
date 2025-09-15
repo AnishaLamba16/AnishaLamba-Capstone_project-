@@ -1,0 +1,151 @@
+Phase 3: Data Modelling & Relationships
+
+PROJECT TITLE:- 
+Expense On a Page: An expense approval & insight system.
+Industry: Finance / Corporate Expense Management.
+Target User: Employees, Managers, and Finance Teams.
+
+STANDARD & CUSTOM OBJECTS :-
+
+Standard Object:
+The Project will be working mainly on the custom objects only, so the standard objects that are used are-
+•	User: Employees will be submitting the expense report.
+          Managers will be approving the expense report if it is above 5000 rupees.
+          Finance Team will be overlooking the all the reports and dashboard.
+•	Task: Auto-create a submit Receipts reminder if they are not submitted.
+•	Report/Dashboard: To overview the spending of the particular month.
+
+Custom Object:
+To represent a single expense report two Custom Objects are made-
+•	Expense (Parent Object)- It will be representing a single report (Eg – A trip to Mumbai)
+o	Label: Expense
+o	Plural Label: Expenses
+o	Object Name: Expense
+o	Description: Will be the one representing a single expense report  
+o	Record Name: Expense ID
+o	Record Type: Auto Number 
+o	Record Format: E-{00000000}
+o	Starting Name: 1
+o	Optional Features: Allow Reports, Allow Activities, Track Field History enabled 
+o	Search Status: Allow Search enabled 
+o	Object Creation Options: Launch New Custom Tab Wizard after saving this custom object enabled.
+
+
+ 
+•	Expense_Line (Child Object)- It will be representing the breakdown of the expense in a particular Expense Report (Eg- Taxi Fare, Hotel Bills).
+o	Label: Expense_Line
+o	Plural Label: Expense_Lines
+o	Object Name: Expense_Line
+o	Description: Will have the particular type of expense in an Expense Record.
+o	Record Name: Expense_Line ID
+o	Record Type: Auto Number 
+o	Record Format: EL-{00000000}
+o	Starting Name: 1
+o	Optional Features: Allow Reports, Allow Activities, Track Field History enabled 
+o	Search Status: Allow Search enabled 
+o	Object Creation Options: Launch New Custom Tab Wizard after saving this custom object enabled.
+
+                        
+
+
+FIELDS:-
+•	Fields for Expense Custom Object:
+
+FIELD	            TYPE	       USE
+Status	          Picklist	   Tracks the life cycle of Expense.
+Total Amount    	Currency	   The amount of money spent. 
+Submission Date  	Date         The date on which the report is submitted.
+Expense Detail	  Text	       Stores the reason for the expense.
+Employee	        Lookup(user) To store whose report is that.
+ 
+
+
+•	Fields for Expense Line Custom Object:
+
+FIELD	          TYPE	        USE
+Category	      Picklist    	Shows the type of Expense.
+Amount 	        Currency	    The amount of money spent. 
+Receipt URL	    URL 	        The link of the receipt of the spending 
+Receipt ID	    Text	        The ID of the receipt.
+Expense(parent)	MDR(Expense)	To know from which expense report it is from 
+PAGE LAYOUT:-
+•	Making the Page Layout for the Expense__c object-
+o	Adding the top section of the record in the following pattern:
+Expense ID                                                      Owner
+Expense Detail                                                Total Amount
+Status                                                                User
+Submission Date 
+
+o	Adding the Related Lists in the following pattern:
+Expense_Lines
+Approval History
+Activity History 
+
+
+
+•	Adding the page layout for the Expense_Line__c object-
+o	Adding the top section of the record in the following pattern:
+Expense_Line ID                         Receipt URL
+Category                                      Receipt ID
+Amount                                        Expense
+RECORD TYPES:-
+•	Expense__c Record Types:
+o	Employee Expense -> For regular staff.
+Existing Record Type: Master
+Record Type Label: Employee Expense
+Record Type Name: Employee_Expense
+Description: For the regular staff 
+Activated
+Make it available for every one
+Layout: Expense Layout  
+
+Will add few more in future if needed
+
+COMPACT LAYOUT:-
+Making a compact layout for the Expense and Expense_Line custom objects so they are easily available for the employee working with a phone 
+•	For the Expense__c object -> Expense Detail, Status, Total Amount, User
+
+•	For the Expense_Line__c object -> Category, Amount, Receipt_ID.
+
+
+SCHEMA BUILDER:
+Using the Schema Builder to 
+•	Show the relationship between objects 
+•	Know what type of relationship between the different objects.
+
+
+
+
+
+
+LOOKUP VS MASTER-DETAIL VS HIERARCHICAL RELATIONSHIPS
+Master-Detail Relationship: Expense__c → Expense_Line__c 
+•	If Expense is deleted, all related Expense Lines are deleted.
+•	Allows roll-up of Amount to Expense.
+Lookup Relationship: Expense__c → User 
+•	Flexible, because deleting a User shouldn’t delete Expenses.
+Hierarchal Relationship:
+•	Not needed
+
+(Pending from Phase 2)
+PROFILES:-
+Expense User Profile-
+•	Setting the object permission for the following object:
+o	Expense custom Object- Read, Create, Edit (no Delete or change owner if desired).
+o	Expense_Line custom Object- Read, Create, Edit.
+
+•	Ensuring that the Field Level Security Exposes Category, Amount, Receipt URL, Status.
+PERMISSION SETS:-
+Expense Approver-
+•	Setting the Object Setting for the Expense Custom Object:
+o	Giving Read, Edit, View All permission as required.
+
+
+OWD (ORGANIZATION WIDE DEFAULT):-
+Changing the Sharing Setting of the Custom Objects-
+•	Expense: Private 
+
+
+
+
+
