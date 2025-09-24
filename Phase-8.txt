@@ -1,0 +1,124 @@
+Phase 8: Data Management & Deployment
+
+PROJECT TITLE:- 
+Expense On a Page: An expense approval & insight system.
+Industry: Finance / Corporate Expense Management.
+Target User: Employees, Managers, and Finance Teams.
+
+DATA IMPORT WIZARD:-
+Data Import Wizard is a simple UI tool to import data that is up to 50,000 records 
+Importing Data for Expense__c Object:
+1.	Creating a CSV File for the Expense__c Object that will be Imported to the Salesforce. 
+
+2.	Importing the made csv file just made with the help of the Data Import Wizard.
+Going to setup> Data import wizard> Lauch Wizard 
+Object: Expense__c
+What do you want do: Add new Record
+Upload the CSV file: Expense_c.csv
+
+mapping the fields Accordingly.
+
+Start Import-> import completed.
+Process Completed:
+
+Importing Data for Expense_Line__c Object:
+1.	Creating a CSV File for the Expense_Line__c Object that will be Imported to the Salesforce.
+
+
+2.	Importing the made csv file just made with the help of the Data Import Wizard.
+Going to setup> Data import wizard> Lauch Wizard 
+Object: Expense_Line__c
+What do you want do: Add new Record
+Upload the CSV file: Expense_Line.csv
+
+
+
+Mapping the fields accordingly 
+
+Start Import-> import completed.
+Process Completed:
+
+
+
+DATA LOADER:-
+Data Loader is an externally used app that is used fir bulk data import/export that can be used to handle up to 5M records.
+Using it to export data of Expense object for backup:
+Google search -> salesforce dataloader -> signing in with salesforce credential.
+New Task ->  Export ->
+Object: Expense__c
+Field: Record ID 
+           Created Date 
+           Expense ID 
+           Status 
+           Submission Date 
+           Total Amount 
+           User
+ 
+
+Saving and running it 
+(the exported data)
+(Export Success notification from the data loader)
+
+DUPLICATE RULE:-
+This is the feature in salesforce that prevent you from making duplicate records in the object 
+Creating a Matching Rule for the expense Object:
+Object: Expense 
+Rule Name: Expense - Receipt ID Exact
+Unique Name: Expense_Receipt_ID_Exact
+Matching Criteria: Expense Detail -> Exact 
+ 
+
+Creating a Duplicate Rule for the Expense Object: 
+Object: Expense 
+Rule Name: Expense Duplicate Detail 
+Record-Level Security: Enforce Sharing Rule
+Action On Create: Allow with alert and report
+Action On Edit: Allow
+Matching Rule: Expense - Receipt ID Exact
+Save 
+
+
+ DATA EXPORT AND BACKUP:-
+
+Previously in the Phase we did the export of the data of the Expense object using the the Data Loader 
+
+And we saved the exported data as the form of backup in our system.
+
+
+
+CHANGE SET:-
+
+It is used for the one click deployment of the project from the sandbox to Production which we will not be needing now.
+
+UNMANAGED VS MANAGED PACKAGES:-
+Managed: This is used for AppExchange, versioning, locked Components.
+Unmanaged: For internal projects to share the whole project with other team to get through.
+
+Let’s make a sample package for the project:
+Package -> New 
+Package Name: Expense on page
+Configure Custom Link: None 
+Component: Adding the Expense Management App
+
+
+ANT MIGRATION TOOL:-
+Not needed for now
+
+VS CODE & SFDX
+Setting Up the VS code for the Salesforce:
+
+
+1.	Installing JDK (Java Development Kit ) 
+
+
+2.	Installing Salesforce CLI for integration 
+
+
+3.	Installing the necessary extensions in VS Code:
+
+4.	Authorizing the salesforce org with vs code 
+
+
+5.	Creating a new project SBTCS
+
+ 
