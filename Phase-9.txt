@@ -1,0 +1,130 @@
+Phase 9: Reporting, Dashboards & Security Review
+
+PROJECT TITLE:- 
+Expense On a Page: An expense approval & insight system.
+Industry: Finance / Corporate Expense Management.
+Target User: Employees, Managers, and Finance Teams.
+
+REPORTS:-
+Salesforce have Report as a tool which can be used to analyse data.
+The necessary reports for the given project we have made them earlier in order to used them in the home page the given reports are-
+1.	Creating reports- 
+•	Creating a report with Pending Approvals of all Expense (For Managers):
+Report Object: Expense.
+Filter: Show Me- All expenses
+           Submission Date- All Time 
+           Status- equals Pending Approval
+Columns: Status
+Report Name: Expense-Pending Approval
+Report Unique Name: ExpensePending_Approval
+Report Description: A report that will be showing all of the expenses with Pending Approval 
+Folder: New Folder 
+             Folder Name- Finance Folder
+             Folder Unique Name- FinanceFolder
+•	Creating a report for the employee monthly spending (For Employee):
+Report Object: Expense.
+Filter: Show Me- All expenses
+           Submission Date- This Month 
+           User- equals kharbanda 
+Columns: Adding Total Amount 
+Report Name: My monthly expense
+Report Unique Name: My_monthly_expense
+Report Description: A report that will be showing all of the expenses of the current month
+Folder: Finance Folder 
+
+
+
+REPORT TYPES:-
+Report Types in salesforce are used in salesforce like a blueprint to tell how the objects are related to each other and from what object to pull the data from.
+Making a Report Types- 
+Define the Custom Report Type:
+Primary Object: Object
+Display Label: Expense with Lines
+API Name: Expense_with_lines
+Description: This report type shows Expense records and their related Expense Line records for expense tracking.
+Store in Category: Other Reports
+Set Availability: Deployment 
+
+Define Report Records Set:
+Related Object: Expense_Lines
+
+
+Final Report:
+
+
+Making a new report to test the report type:
+Report Type: Expense with Lines 
+Adding Columns: Expense ID, Expense Detail, Status, Total Amount, Expense_Line ID,   Category, Amount.
+Adding Groups: Category
+Report Name: Expense with Lines Report
+Report Unique Name: Expense_with_Lines_Report
+Report Description: Showing the Expense record with Expense_Line record.
+Folder: Finance Folder 
+
+
+DASHBOARD
+It is used for making a visual representation of the reports. 
+Making a new Dashboard:
+Name: Expense by category
+Description: It will show the number of Expense in a particular category.
+Folder: Test dashboard Folder
+Widget: Chart or TablReport: Expense with Lines Report
+Display As: Funnel Chart 
+
+
+
+
+      
+DYNAMIC DASHBOARD:-
+Making THE DASHBOARD A Dynamic one so that it runs as current logged in user 
+
+Adding the Dashboard to the Home Page:
+
+
+
+SHARING SETTING:-
+It gives the Org-Wide default + Sharing rules.
+
+
+
+Making the sharing rule for the following Expense Object.
+Label: Expense Rule
+Rule Name: Expense_Rule
+Rule Type: Based on Record Owner
+Expense Owner: All Internal User 
+Share with: Manager
+Access Level: Read/ Write 
+
+FIELD LEVEL SECURITY:-
+The field level security of every field made in the project was set while making the field for example.
+1.	Expense__c -> Total_Amount__c 
+
+2.	Expense__c -> Submission_Date__c
+
+3.	Expense_Line__c -> Category__c
+
+Visible to all as the field is required.
+
+
+
+SESSION SETTING:-
+Controls login timeout, forced logout, session security.
+Timeout Value: 2 hours
+locking session to IP Address
+Require HttpOnly attribute 
+LOGIN IP RANGES:-
+1.	For Expense Admin Profile:
+
+Login IP Range :  49.36.0.0 – 49.37.0.0
+
+For Expense User Profile:
+
+Login IP Range :  49.36.0.0 – 49.37.0.0
+
+
+
+AUDIT TRAIL:-
+Viewing the Audit Trail-
+ 
+
+
